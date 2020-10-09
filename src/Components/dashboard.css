@@ -5,9 +5,7 @@ body {
   color: white;
   text-decoration: none;
 }
-text {
-  fill: white;
-}
+
 .widgetWrap {
   background: #2a2a2a;
 }
@@ -42,6 +40,7 @@ text {
   font-size: 24px;
   text-align: left;
   font-weight: bold;
+  color: white;
 }
 .Dropdown-root drop {
   font-size: 15px;
@@ -68,4 +67,27 @@ text {
 .widgetWrap {
   height: 182px;
   margin-bottom: 19px;
+}
+.graphWidget {
+  margin-bottom: 19px;
+  background: #2a2a2a;
+}
+.WidgetCounter {
+  display: flex;
+  align-items: flex-end;
+  font-size: 50px;
+  padding-left: 7px;
+  color: yellow;
+  margin-bottom: 19px;
+}
+
+.WidgetCalender {
+  height: 300px;
+  margin-top: 19px;
+}
+body {
+  color: white;
+}
+.css-mxjn5s__content {
+  color: white;
 }

@@ -6,6 +6,14 @@ import WidgetDoughnut from "./WidgetDoughnut";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 import "./dashboard.css";
+import { commentsData } from "./index";
+import WidgetComment from "./WidgetComment";
+import WidgetOnBoarding from "./WidgetOnBoarding";
+import WidgetCarousel from './WidgetCarousel';
+import WidgetCounter from './WidgetCounter';
+import WidgetFlipNumbers from './WidgetFlipNumbers';
+import WidgetCalender from './WidgetCalender';
+import WidgetSocialMedia from './WidgetSocialMedia';
 const config = {
   apiKey: "AIzaSyDMu-Vw30ykPPmFT3cXeunzKEi4EahzglI",
   spreadsheetId: "1vcDPrMexD8bxNwwzK9IxF8wch6Hfezq2eooJACDiqgg",
@@ -34,6 +42,7 @@ class Dashboard extends Component {
       bounce_rate: null,
       sourceArr: [],
       userArr: [],
+      comments: commentsData,
     };
   }
   getData = (arg) => {
@@ -167,15 +176,19 @@ class Dashboard extends Component {
         );
       });
   }
+  setComment = (newComment) => {
+    this.setState({ comments: newComment });
+  };
+
   render() {
     //const chartData = [];
 
     // Create a JSON object to store the chart configurations
-
+    console.log(commentsData);
     return (
       <div>
         <Container>
-          <Row classsName="TopHeader">
+          <Row className="TopHeader">
             <Col className="col1">
               <h1>Welcome to DashBoard</h1>
             </Col>
@@ -191,11 +204,11 @@ class Dashboard extends Component {
           </Row>
         </Container>
         <Container className="Maindashboard">
-          <Row>
+          <Row className="WidgetText">
             <Col>
               <WidgetText
-                title="Organic Source"
-                value={this.state.organicSource}
+                title="Referal Source"
+                value={this.state.referralSource}
               />
             </Col>
             <Col>
@@ -211,45 +224,70 @@ class Dashboard extends Component {
               />
             </Col>
           </Row>
-          <Row>
-            <Col>
-              <WidgetText
-                title="Organic Source"
-                value={this.state.organicSource}
-              />
-            </Col>
-            <Col>
-              <WidgetText
-                title="Organic Source"
-                value={this.state.organicSource}
-              />
-            </Col>
-            <Col>
-              <WidgetText
-                title="Direct Source"
-                value={this.state.directSource}
-              />
-            </Col>
+          <Row className="WidgetBar">
             <Col>
               <WidgetBar title="Comparison" data={this.state.sourceArr} />
             </Col>
           </Row>
-          <Row>
+          <Row className="WidgetDoughnut">
             <Col>
-              <WidgetDoughnut titlt="User" data={this.state.userArr} />
+              <WidgetDoughnut title="User" data={this.state.userArr} />
+            </Col>
+          </Row>
+          <Row className="WidgetComment">
+            <Col>
+              <WidgetComment
+                comments={this.state.comments}
+                setComment={this.setComment}
+              />
+            </Col>
+          </Row>
+          <WidgetOnBoarding />
+          <Row className="WidgetCarousel">
+            <Col>
+              <WidgetCarousel />
+            </Col>
+          </Row>
+          <Row className = "WidgetCounter">
+            <Col>
+            <WidgetCounter title="Referal Source"
+                value={this.state.referralSource}/>
+            </Col>
+            <Col>
+            <WidgetCounter title="Organic Source"
+                value={this.state.organicSource}/>
+            </Col>
+            <Col>
+            <WidgetCounter title="Direct Source"
+                value={this.state.directSource}/>
+            </Col>
+          </Row>
+          <Row className ="WidgetCalender">
+            <Col>
+              <WidgetCalender />
+            </Col>
+          </Row>
+          <Row className ="WidgetSocialMedia">
+            <Col>
+              <WidgetSocialMedia title = "twitter"/>
+            </Col>
+            <Col>
+              <WidgetSocialMedia title = "facebook"/>
+            </Col>
+            <Col>
+              <WidgetSocialMedia title = "instagram"/>
+            </Col>
+            <Col>
+              <WidgetSocialMedia title = "youtube"/>
             </Col>
           </Row>
         </Container>
+
+
+
       </div>
     );
   }
 }
 export default Dashboard;
-/*
-     <Container>
-          <Row>
-            <Col>
-              <WidgetDoughnut titlt="User" data={this.state.userArr} />
-            </Col>
-          </Row>
-        </Container>*/
+

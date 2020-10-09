@@ -8,7 +8,7 @@ function WidgetBar(props) {
   const chartConfigs = {
     type: "bar2d", // The chart type
     width: "100%", // Width of the chart
-    height: "125", // Height of the chart
+    height: "300", // Height of the chart
     dataFormat: "json", // Data type
     dataSource: {
       // Chart Configuration
@@ -21,11 +21,9 @@ function WidgetBar(props) {
     },
   };
   return (
-    <div className="widgetWrap">
+    <div className="graphWidget">
       <div className="widgetTitle">{props.title}</div>
-      <div className="widgetValue">
-        <ReactFC {...chartConfigs} />
-      </div>
+      <ReactFC {...chartConfigs} />
     </div>
   );
 }
